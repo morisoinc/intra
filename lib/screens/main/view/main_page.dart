@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intra/main/widgets/main.dart';
+import 'package:intra/screens/main/widgets/main.dart';
 
 class HomePage extends StatelessWidget {
   static Route route() {

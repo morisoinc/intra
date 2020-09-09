@@ -30,14 +30,14 @@ packages:
     source: hosted
     version: "2.4.2"
   authentication_repository:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       path: "packages/authentication_repository"
       relative: true
     source: path
     version: "1.0.0"
   bloc:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: bloc
       url: "https://pub.dartlang.org"
@@ -86,7 +86,7 @@ packages:
     source: hosted
     version: "1.0.1"
   cloud_firestore:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: cloud_firestore
       url: "https://pub.dartlang.org"
@@ -127,15 +127,22 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.2"
+  cubit:
+    dependency: transitive
+    description:
+      name: cubit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   cupertino_icons:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
   equatable:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: equatable
       url: "https://pub.dartlang.org"
@@ -163,7 +170,7 @@ packages:
     source: hosted
     version: "7.3.0"
   firebase_analytics:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: firebase_analytics
       url: "https://pub.dartlang.org"
@@ -184,7 +191,7 @@ packages:
     source: hosted
     version: "0.1.1"
   firebase_auth:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: firebase_auth
       url: "https://pub.dartlang.org"
@@ -205,7 +212,7 @@ packages:
     source: hosted
     version: "0.1.3+1"
   firebase_core:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
@@ -226,17 +233,24 @@ packages:
     source: hosted
     version: "0.1.1+2"
   flutter:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description: flutter
     source: sdk
     version: "0.0.0"
   flutter_bloc:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.5"
+  flutter_cubit:
+    dependency: "direct screens.main"
+    description:
+      name: flutter_cubit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -248,14 +262,14 @@ packages:
     source: sdk
     version: "0.0.0"
   font_awesome_flutter:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: font_awesome_flutter
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.8.1"
   formz:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: formz
       url: "https://pub.dartlang.org"
@@ -269,7 +283,7 @@ packages:
     source: hosted
     version: "1.2.0"
   google_fonts:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: google_fonts
       url: "https://pub.dartlang.org"
@@ -360,7 +374,7 @@ packages:
     source: hosted
     version: "0.12.8"
   meta:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: meta
       url: "https://pub.dartlang.org"
@@ -451,7 +465,7 @@ packages:
     source: hosted
     version: "1.0.3"
   pedantic:
-    dependency: "direct main"
+    dependency: "direct screens.main"
     description:
       name: pedantic
       url: "https://pub.dartlang.org"

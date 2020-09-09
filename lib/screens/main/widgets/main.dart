@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intra/screens/home/view/home_page.dart';
 import 'package:intra/theme.dart';
 
 import 'layout.dart';
@@ -17,7 +18,7 @@ class _MainState extends State<Main> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _childrenWidgets = <Widget>[
-    Container(color: Colors.deepOrange),
+    HomePage(),
     Container(color: Colors.green),
     Container(color: Colors.amber),
     Container(color: Colors.lightBlueAccent)

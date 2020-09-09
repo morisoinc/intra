@@ -1,7 +1,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intra/login/login.dart';
+import 'package:intra/screens/login/login.dart';
 
 class LoginPage extends StatelessWidget {
   static Route route() {

@@ -2,9 +2,9 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intra/authentication/authentication.dart';
-import 'package:intra/main/main.dart';
-import 'package:intra/login/login.dart';
-import 'package:intra/splash/splash.dart';
+import 'package:intra/screens/main/main.dart';
+import 'package:intra/screens/login/login.dart';
+import 'package:intra/screens/splash/splash.dart';
 import 'package:intra/theme.dart';
 
 class App extends StatelessWidget {
