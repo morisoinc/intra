@@ -26,7 +26,7 @@ const white2 = Color(0xFFF3F5FE);
 
 
 final theme = ThemeData(
-  textTheme: GoogleFonts.openSansTextTheme(),
+  fontFamily: 'Inter',
   primaryColorDark: purple4,
   primaryColorLight: purple3,
   primaryColor: purple2,
