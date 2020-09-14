@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intra/screens/home/view/home_page.dart';
 import 'package:intra/theme.dart';
 
-import 'CircularOuterNotchedRectangle.dart';
 import 'layout.dart';
 import 'fab_bottom_app_bar.dart';
 import 'fab_with_icons.dart';
@@ -64,13 +63,29 @@ class _MainState extends State<Main> {
         centerItemText: '',
         color: theme.primaryColor,
         selectedColor: theme.primaryColorDark,
-        notchedShape: CircularOuterNotchedRectangle(),
         onTabSelected: _selectedTab,
         items: [
-          FABBottomAppBarItem(iconData: Icons.home, text: "home"),
-          FABBottomAppBarItem(iconData: Icons.notifications, text: "notif"),
-          FABBottomAppBarItem(iconData: Icons.help, text: "help"),
-          FABBottomAppBarItem(iconData: Icons.settings, text: "settings"),
+          // FABBottomAppBarItem(iconData: Icons.home, text: "home"),
+          // FABBottomAppBarItem(iconData: Icons.notifications, text: "notif"),
+          // FABBottomAppBarItem(iconData: Icons.help, text: "help"),
+          // FABBottomAppBarItem(iconData: Icons.settings, text: "settings"),
+          Container(
+              padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
+              child: SvgPicture.asset('assets/navbar_home.svg'),
+            alignment: Alignment.center,
+          ),
+          Container(
+              padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
+              child: SvgPicture.asset('assets/navbar_notifications.svg')
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
+              child: SvgPicture.asset('assets/navbar_help.svg'),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
+              child: SvgPicture.asset('assets/navbar_settings.svg'),
+          ),
         ],
       ),
     );

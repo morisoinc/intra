@@ -21,7 +21,7 @@ class FABBottomAppBar extends StatefulWidget {
   }) {
     assert(this.items.length == 2 || this.items.length == 4);
   }
-  final List<FABBottomAppBarItem> items;
+  final List<Widget> items;
   final String centerItemText;
   final double height;
   final double iconSize;
@@ -56,14 +56,11 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
     });
     items.insert(items.length >> 1, _buildMiddleTabItem());
 
-    return BottomAppBar(
-      shape: widget.notchedShape,
+    return Container(
+      padding: EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
       child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: items,
       ),
-      color: widget.backgroundColor,
     );
   }
 
@@ -87,7 +84,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
   }
 
   Widget _buildTabItem({
-    FABBottomAppBarItem item,
+    Widget item,
     int index,
     ValueChanged<int> onPressed,
   }) {
@@ -103,11 +100,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(item.iconData, color: color, size: widget.iconSize),
-                Text(
-                  item.text,
-                  style: TextStyle(color: color),
-                )
+                item
               ],
             ),
           ),

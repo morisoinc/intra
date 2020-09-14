@@ -7,7 +7,7 @@ final theme = ThemeData(
   primaryColorLight: const Color(0xFFF7F4EA),
   primaryColor: const Color(0xFFC0B9DD),
   accentColor: const Color(0xFF009688),
-  scaffoldBackgroundColor: const Color(0xFFF7F4EA),
+  scaffoldBackgroundColor: const Color(0xFFFCFCFC),
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(6),
