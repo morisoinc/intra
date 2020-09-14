@@ -71,20 +71,19 @@ class _MainState extends State<Main> {
           // FABBottomAppBarItem(iconData: Icons.settings, text: "settings"),
           Container(
               padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-              child: SvgPicture.asset('assets/navbar_home.svg'),
-            alignment: Alignment.center,
+              child: SvgPicture.asset(_currentIndex == 0 ? 'assets/navbar_selected_home.svg' : 'assets/navbar_unselected_home.svg'),
           ),
           Container(
               padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-              child: SvgPicture.asset('assets/navbar_notifications.svg')
+              child: SvgPicture.asset(_currentIndex == 1 ? 'assets/navbar_selected_notifications.svg' : 'assets/navbar_unselected_notifications.svg')
           ),
           Container(
             padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-              child: SvgPicture.asset('assets/navbar_help.svg'),
+              child: SvgPicture.asset(_currentIndex == 2 ? 'assets/navbar_selected_help.svg' : 'assets/navbar_unselected_help.svg'),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-              child: SvgPicture.asset('assets/navbar_settings.svg'),
+              child: SvgPicture.asset(_currentIndex == 3 ? 'assets/navbar_selected_settings.svg' : 'assets/navbar_unselected_settings.svg'),
           ),
         ],
       ),
