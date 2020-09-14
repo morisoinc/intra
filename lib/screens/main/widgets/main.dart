@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intra/screens/home/view/home_page.dart';
 import 'package:intra/theme.dart';
 
+import 'CircularOuterNotchedRectangle.dart';
 import 'layout.dart';
 import 'fab_bottom_app_bar.dart';
 import 'fab_with_icons.dart';
@@ -17,12 +19,12 @@ class _MainState extends State<Main> {
   int _currentIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  final List<Widget> _childrenWidgets = <Widget>[
+  final _pages = List<Widget>.unmodifiable([
     HomePage(),
     Container(color: Colors.green),
     Container(color: Colors.amber),
     Container(color: Colors.lightBlueAccent)
-  ];
+  ]);
 
   String _lastSelected = 'TAB: 0';
 
@@ -43,19 +45,26 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _childrenWidgets[_currentIndex],
+      body: _pages[_currentIndex],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-        elevation: 2.0,
+      floatingActionButton: InkWell(
+        child: Container(
+          margin: const EdgeInsets.only(top:30),
+          width: 60,
+          height: 60,
+          padding: EdgeInsets.all(16),
+          decoration: BoxDecoration(
+              color: Color(0xFFC0B9DD),
+              borderRadius: BorderRadius.circular(30)
+          ),
+        ),
+        onTap: (){},
       ),
       bottomNavigationBar: FABBottomAppBar(
         centerItemText: '',
         color: theme.primaryColor,
         selectedColor: theme.primaryColorDark,
-        notchedShape: CircularNotchedRectangle(),
+        notchedShape: CircularOuterNotchedRectangle(),
         onTabSelected: _selectedTab,
         items: [
           FABBottomAppBarItem(iconData: Icons.home, text: "home"),
