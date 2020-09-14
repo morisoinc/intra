@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
               }
 
               return Text(
-                'NO USER WAS FOUND',
+                '',
                 style: TextStyle(
                     fontSize: 48
                 ),
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
         }
 
         return Text(
-          'NO USER WAS FOUND',
+          '',
           style: TextStyle(
             fontSize: 48
           ),
