@@ -61,6 +61,17 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
       child: Row(
         children: items,
       ),
+      decoration: BoxDecoration(
+        color: white3,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
     );
   }
 
