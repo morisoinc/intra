@@ -1,9 +1,9 @@
 
 
 import 'package:flutter/cupertino.dart';
-import 'package:intra/meta/intraTextStyles/TextStylePageTitle.dart';
+import 'package:intra/meta/intraTextStyles/text_style_page_title.dart';
 import 'package:intra/theme.dart';
-import 'package:intra/widgets/IntraText.dart';
+import 'package:intra/widgets/text/intra_text.dart';
 
 class IntraPageTitleText extends StatelessWidget {
   final String text;

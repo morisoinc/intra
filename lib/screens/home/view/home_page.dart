@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               if (snapshot.hasData) {
                 Map<String, dynamic> data = snapshot.data.data;
                 return BlocProvider<HomeCubit>(
-                  create: (context) => HomeCubit(data['firstName'] + ' ' + data['lastName']),
+                  create: (context) => HomeCubit(data['firstName']),
                   child: HomeContent(),
                 );
               }
