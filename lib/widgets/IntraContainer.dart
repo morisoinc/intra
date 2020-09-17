@@ -1,7 +1,9 @@
 
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:intra/meta/intraSpacing/margin.dart';
+import 'package:intra/theme.dart';
 
 class IntraContainer extends StatelessWidget {
 
@@ -11,15 +13,21 @@ class IntraContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Material(
+      type: MaterialType.transparency,
       child: Container(
-        padding: EdgeInsets.fromLTRB(
-            IntraMargin.horizontalMargin,
-            IntraMargin.verticalMargin,
-            IntraMargin.horizontalMargin,
-            IntraMargin.verticalMargin
+        decoration: new BoxDecoration(color: white3),
+        child: SafeArea(
+          child: Container(
+            padding: EdgeInsets.fromLTRB(
+                IntraMargin.horizontalMargin,
+                IntraMargin.verticalMargin,
+                IntraMargin.horizontalMargin,
+                IntraMargin.verticalMargin
+            ),
+            child: child,
+          ),
         ),
-        child: child,
       ),
     );
   }
