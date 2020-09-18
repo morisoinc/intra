@@ -23,6 +23,7 @@ const gray1 = Color(0xFFECE9F4);
 
 const white3 = Color(0xFFFCFCFC);
 const white2 = Color(0xFFF3F5FE);
+const white1 = Color(0xFFFFFFFF);
 
 
 final theme = ThemeData(

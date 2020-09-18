@@ -23,7 +23,7 @@ class IntraBigMainButton extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                   Radius.circular(15),
                 ),
-                color: gray1,
+                color: white1,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.1),

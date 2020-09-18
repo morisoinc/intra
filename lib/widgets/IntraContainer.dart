@@ -42,7 +42,7 @@ class IntraContainer extends StatelessWidget {
 class DottedBackground extends CustomPainter {
   static final offsets = [];
   static final brush = Paint()
-    ..color = Color(0xFFBBBBBB)
+    ..color = Color(0xFFDCDCDC)
     ..strokeCap = StrokeCap.round
     ..strokeWidth = 2;
 
