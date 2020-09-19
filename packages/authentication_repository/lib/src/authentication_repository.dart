@@ -32,13 +32,13 @@ class AuthenticationRepository {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
-  /// Stream of [User] which will emit the current user when
+  /// Stream of [IntraUser] which will emit the current user when
   /// the authentication state changes.
   ///
-  /// Emits [User.empty] if the user is not authenticated.
-  Stream<User> get user {
-    return _firebaseAuth.onAuthStateChanged.map((firebaseUser) {
-      return firebaseUser == null ? User.empty : firebaseUser.toUser;
+  /// Emits [IntraUser.empty] if the user is not authenticated.
+  Stream<IntraUser> get user {
+    return _firebaseAuth.authStateChanges().map((firebaseUser) {
+      return firebaseUser == null ? IntraUser.empty : firebaseUser.toUser;
     });
   }
 
@@ -111,8 +111,8 @@ class AuthenticationRepository {
   }
 }
 
-extension on FirebaseUser {
-  User get toUser {
-    return User(id: uid, email: email, name: displayName, photo: photoUrl);
+extension on User {
+  IntraUser get toUser {
+    return IntraUser(id: uid, email: email, name: displayName, photo: photoURL);
   }
 }

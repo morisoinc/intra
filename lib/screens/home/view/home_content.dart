@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intra/screens/home/cubit/home_cubit.dart';
 import 'package:intra/screens/schedule_session/view/schedule_session_page.dart';
-import 'package:intra/widgets/IntraContainer.dart';
+import 'package:intra/widgets/base_screen_widget/IntraContainer.dart';
 import 'package:intra/widgets/button/intra_big_main_button.dart';
 import 'package:intra/widgets/button/intra_split_pill_button.dart';
 import 'package:intra/widgets/text/intra_page_subtitle_text.dart';

@@ -22,7 +22,7 @@ class AuthenticationBloc
   }
 
   final AuthenticationRepository _authenticationRepository;
-  StreamSubscription<User> _userSubscription;
+  StreamSubscription<IntraUser> _userSubscription;
 
   @override
   Stream<AuthenticationState> mapEventToState(
@@ -44,7 +44,7 @@ class AuthenticationBloc
   AuthenticationState _mapAuthenticationUserChangedToState(
     AuthenticationUserChanged event,
   ) {
-    return event.user != User.empty
+    return event.user != IntraUser.empty
         ? AuthenticationState.authenticated(event.user)
         : const AuthenticationState.unauthenticated();
   }

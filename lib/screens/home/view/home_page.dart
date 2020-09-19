@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,41 +7,27 @@ import 'package:intra/screens/home/cubit/home_cubit.dart';
 import 'package:intra/screens/home/view/home_content.dart';
 
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .get();
+
     return FutureBuilder(
-      future: FirebaseAuth.instance.currentUser(),
-      builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
+      future: user,
+      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasData) {
-          final user = Firestore.instance.collection('users').document(snapshot.data.uid).get();
-
-          return FutureBuilder(
-            future: user,
-            builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-              if (snapshot.hasData) {
-                Map<String, dynamic> data = snapshot.data.data;
-                return BlocProvider<HomeCubit>(
-                  create: (context) => HomeCubit(data['firstName']),
-                  child: HomeContent(),
-                );
-              }
-
-              return Text(
-                '',
-                style: TextStyle(
-                    fontSize: 48
-                ),
-              );
-            },
+          Map<String, dynamic> data = snapshot.data.data();
+          return BlocProvider<HomeCubit>(
+            create: (context) => HomeCubit(data['firstName']),
+            child: HomeContent(),
           );
         }
 
         return Text(
           '',
-          style: TextStyle(
-            fontSize: 48
-          ),
+          style: TextStyle(fontSize: 48),
         );
       },
     );

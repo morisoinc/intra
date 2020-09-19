@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intra/screens/schedule_session/cubit/schedule_session_cubit.dart';
-import 'package:intra/widgets/IntraContainer.dart';
+import 'package:intra/widgets/base_screen_widget/IntraContainer.dart';
 import 'package:intra/widgets/button/intra_back_button.dart';
 import 'package:intra/widgets/button/intra_big_main_button.dart';
 import 'package:intra/widgets/text/intra_page_subtitle_text.dart';
