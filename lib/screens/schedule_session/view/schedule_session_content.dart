@@ -21,17 +21,22 @@ class ScheduleSessionContent extends StatelessWidget {
               }),
               SizedBox(height: 42),
               IntraPageTitleText('Agendar Consulta'),
-
               SizedBox(height: 14),
               IntraPageSubtitleText('Veja os profissionais disponíveis e escolha o que melhor pode te ajudar'),
 
-              SizedBox(height: 31),
-              IntraBigMainButton('Psicólogos', 'Veja especialistas disponíveis', null),
 
-              SizedBox(height: 35),
-              IntraBigMainButton('Calendário', 'Dê prioridade ao dia da consulta', null),
-            ],
-          ));
+            ]),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 31),
+                IntraBigMainButton('Psicólogos', 'Veja especialistas disponíveis', null),
+
+                SizedBox(height: 35),
+                IntraBigMainButton('Calendário', 'Dê prioridade ao dia da consulta', null),
+              ],
+            )
+          );
         });
   }
 }

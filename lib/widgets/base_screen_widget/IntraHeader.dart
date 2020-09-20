@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../theme.dart';
+
 class IntraHeader extends StatelessWidget {
   final bool showCurvedBackground;
   final Widget child;
@@ -9,8 +11,9 @@ class IntraHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: !showCurvedBackground ? child : Container(
-
+      child: !showCurvedBackground ? child : CustomPaint(
+        painter: CurvedBackground(MediaQuery.of(context).size.height, 228),
+        child: child,
       ),
     );
   }
@@ -19,17 +22,20 @@ class IntraHeader extends StatelessWidget {
 
 class CurvedBackground extends CustomPainter {
 
-  final double height;
+  static final brush = Paint()
+    ..color = purple4;
 
-  CurvedBackground(this.height);
+  final double height;
+  final double width;
+
+  CurvedBackground(this.height, this.width);
 
   @override
   void paint(Canvas canvas, Size size) {
-
+    Rect rect = Rect.fromPoints(Offset.zero, Offset(height, width));
+    canvas.drawRect(rect, brush);
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-
-  }
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

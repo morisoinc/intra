@@ -4,11 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intra/meta/intraSpacing/margin.dart';
 import 'package:intra/theme.dart';
+import 'package:intra/widgets/base_screen_widget/IntraHeader.dart';
 
 class IntraContainer extends StatelessWidget {
-  final Widget child;
+  final Widget header;
+  final Widget body;
+  final bool showHeader;
 
-  IntraContainer(this.child);
+  IntraContainer(this.header, this.body, {this.showHeader = true});
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +25,28 @@ class IntraContainer extends StatelessWidget {
             MediaQuery.of(context).size.height,
           ),
           child: Container(
-            child: SafeArea(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(
-                    IntraMargin.horizontalMargin,
-                    IntraMargin.verticalMargin,
-                    IntraMargin.horizontalMargin,
-                    IntraMargin.verticalMargin),
-                child: child,
-              ),
-            ),
-          ),
+              child: Column(
+            children: [
+              IntraHeader(
+                  showHeader,
+                  SafeArea(
+                      child: Container(
+                    padding: EdgeInsets.fromLTRB(
+                        IntraMargin.horizontalMargin,
+                        IntraMargin.verticalMargin,
+                        IntraMargin.horizontalMargin,
+                        0.0),
+                    child: header,
+                  ))),
+              Container(
+                  padding: EdgeInsets.fromLTRB(
+                      IntraMargin.horizontalMargin,
+                      0.0,
+                      IntraMargin.horizontalMargin,
+                      IntraMargin.verticalMargin),
+                  child: body),
+            ],
+          )),
         ),
       ),
     );
