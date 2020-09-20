@@ -13,29 +13,29 @@ class ScheduleSessionContent extends StatelessWidget {
     return BlocConsumer<ScheduleSessionCubit, ScheduleSessionState>(
         listener: (context, state) {},
         builder: (context, state) {
-          return IntraContainer(Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+          return IntraContainer(
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               IntraBackButton(() {
                 Navigator.pop(context);
               }),
               SizedBox(height: 42),
               IntraPageTitleText('Agendar Consulta'),
               SizedBox(height: 14),
-              IntraPageSubtitleText('Veja os profissionais disponíveis e escolha o que melhor pode te ajudar'),
-
-
+              IntraPageSubtitleText(
+                  'Veja os profissionais disponíveis e escolha o que melhor pode te ajudar'),
             ]),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 31),
-                IntraBigMainButton('Psicólogos', 'Veja especialistas disponíveis', null),
-
+                IntraBigMainButton(
+                    'Psicólogos', 'Veja especialistas disponíveis', null),
                 SizedBox(height: 35),
-                IntraBigMainButton('Calendário', 'Dê prioridade ao dia da consulta', null),
+                IntraBigMainButton(
+                    'Calendário', 'Dê prioridade ao dia da consulta', null),
               ],
-            )
+            ),
+            showHeader: false,
           );
         });
   }
