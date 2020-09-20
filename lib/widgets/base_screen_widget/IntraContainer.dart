@@ -13,6 +13,12 @@ class IntraContainer extends StatelessWidget {
 
   IntraContainer(this.header, this.body, {this.showHeader = true});
 
+  static const headerPadding = EdgeInsets.fromLTRB(IntraMargin.horizontalMargin,
+      IntraMargin.verticalMargin, IntraMargin.horizontalMargin, 0.0);
+
+  static const bodyPadding = EdgeInsets.fromLTRB(IntraMargin.horizontalMargin,
+      0.0, IntraMargin.horizontalMargin, IntraMargin.verticalMargin);
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -25,28 +31,24 @@ class IntraContainer extends StatelessWidget {
             MediaQuery.of(context).size.height,
           ),
           child: Container(
-              child: Column(
-            children: [
-              IntraHeader(
+            child: Column(
+              children: [
+                IntraHeader(
                   showHeader,
                   SafeArea(
-                      child: Container(
-                    padding: EdgeInsets.fromLTRB(
-                        IntraMargin.horizontalMargin,
-                        IntraMargin.verticalMargin,
-                        IntraMargin.horizontalMargin,
-                        0.0),
-                    child: header,
-                  ))),
-              Container(
-                  padding: EdgeInsets.fromLTRB(
-                      IntraMargin.horizontalMargin,
-                      0.0,
-                      IntraMargin.horizontalMargin,
-                      IntraMargin.verticalMargin),
-                  child: body),
-            ],
-          )),
+                    child: Container(
+                      padding: headerPadding,
+                      child: header,
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: bodyPadding,
+                  child: body,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
