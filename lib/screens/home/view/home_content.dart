@@ -13,45 +13,62 @@ class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return IntraContainer(
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                IntraSubpageTitleText('Olá, ' + state.userName + '!', color: white1),
-                SizedBox(height: 8),
-                IntraPageSubtitleText('Como está se sentindo hoje?', color: white1),
-                SizedBox(height: 16),
-                IntraSplitPillButton(
-                    'Consultas', '2 agendadas', 'Tarefas', '5 anotadas'),
-                SizedBox(height: 32),
-              ]),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IntraBigMainButton(
-                      'Agendar Consulta',
-                      'Veja o perfil dos psicólogos e escolha seu horário',
-                      () => _openScheduleSession(context),
+      listener: (context, state) {},
+      builder: (context, state) {
+        return IntraContainer(
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            IntraSubpageTitleText(
+              'Olá, ' + state.userName + '!',
+              color: white1,
+            ),
+            SizedBox(height: 8),
+            IntraPageSubtitleText(
+              'Como está se sentindo hoje?',
+              color: white1,
+            ),
+            SizedBox(height: 16),
+            IntraSplitPillButton(
+              'Consultas',
+              '2 agendadas',
+              'Tarefas',
+              '5 anotadas',
+            ),
+            SizedBox(height: 16),
+          ]),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 32),
+              IntraBigMainButton(
+                'Agendar Consulta',
+                'Veja o perfil dos psicólogos e escolha seu horário',
+                () => _openScheduleSession(context),
+              ),
+              SizedBox(height: 32),
+              Row(
+                children: [
+                  Expanded(
+                    child: IntraBigMainButton(
+                      'Minhas Tarefas',
+                      'Anote e estude',
+                      null,
                     ),
-                    SizedBox(height: 32),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: IntraBigMainButton(
-                              'Minhas Tarefas', 'Anote e estude', null),
-                        ),
-                        SizedBox(width: 8),
-                        Expanded(
-                          child: IntraBigMainButton(
-                              'Notas Mentais', 'Anote como se sente', null),
-                        ),
-                      ],
+                  ),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: IntraBigMainButton(
+                      'Notas Mentais',
+                      'Anote como se sente',
+                      null,
                     ),
-                  ],
-                ),
-              ));
-        });
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   _openScheduleSession(BuildContext context) {
