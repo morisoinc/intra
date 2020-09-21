@@ -55,6 +55,7 @@ class _IntraHeaderState extends State<IntraHeader> {
 
 class CurvedBackground extends CustomPainter {
   static final brush = Paint()..color = purple4;
+  static final curveRadius = 48.0;
 
   final double height;
   final double width;
@@ -63,8 +64,16 @@ class CurvedBackground extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Rect rect = Rect.fromPoints(Offset.zero, Offset(width, height));
-    canvas.drawRect(rect, brush);
+    var path = Path();
+
+    path.moveTo(0, height + curveRadius);
+    path.quadraticBezierTo(0, height, curveRadius, height);
+    path.lineTo(width - curveRadius, height);
+    path.quadraticBezierTo(width, height, width, height - curveRadius);
+    path.lineTo(width, 0);
+    path.lineTo(0, 0);
+
+    canvas.drawPath(path, brush);
   }
 
   @override
