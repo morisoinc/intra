@@ -9,9 +9,9 @@ import 'package:intra/widgets/base_screen_widget/IntraHeader.dart';
 class IntraContainer extends StatelessWidget {
   final Widget header;
   final Widget body;
-  final bool showHeader;
+  final backgroundStyle bgStyle;
 
-  IntraContainer(this.header, this.body, {this.showHeader = true});
+  IntraContainer(this.header, this.body, {this.bgStyle = backgroundStyle.none});
 
   static const headerPadding = EdgeInsets.fromLTRB(IntraMargin.horizontalMargin,
       IntraMargin.verticalMargin, IntraMargin.horizontalMargin, 0.0);
@@ -34,7 +34,7 @@ class IntraContainer extends StatelessWidget {
             child: Column(
               children: [
                 IntraHeader(
-                  showHeader,
+                  bgStyle,
                   SafeArea(
                     child: Container(
                       padding: headerPadding,

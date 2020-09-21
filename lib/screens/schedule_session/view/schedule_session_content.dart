@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intra/screens/schedule_session/cubit/schedule_session_cubit.dart';
 import 'package:intra/widgets/base_screen_widget/IntraContainer.dart';
+import 'package:intra/widgets/base_screen_widget/IntraHeader.dart';
 import 'package:intra/widgets/button/intra_back_button.dart';
 import 'package:intra/widgets/button/intra_big_main_button.dart';
 import 'package:intra/widgets/text/intra_page_subtitle_text.dart';
@@ -18,7 +19,7 @@ class ScheduleSessionContent extends StatelessWidget {
               IntraBackButton(() {
                 Navigator.pop(context);
               }),
-              SizedBox(height: 42),
+              SizedBox(height: 24),
               IntraPageTitleText('Agendar Consulta'),
               SizedBox(height: 14),
               IntraPageSubtitleText(
@@ -35,7 +36,7 @@ class ScheduleSessionContent extends StatelessWidget {
                     'Calendário', 'Dê prioridade ao dia da consulta', null),
               ],
             ),
-            showHeader: false,
+            bgStyle: backgroundStyle.translucentRectangles,
           );
         });
   }
