@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseFirestore.instance
-        .collection('users')
+        .collection('user')
         .doc(FirebaseAuth.instance.currentUser.uid)
         .get();
 
@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
         if (snapshot.hasData) {
           Map<String, dynamic> data = snapshot.data.data();
           return BlocProvider<HomeCubit>(
-            create: (context) => HomeCubit(data['firstName']),
+            create: (context) => HomeCubit(data['fullName']),
             child: HomeContent(),
           );
         }

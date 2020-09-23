@@ -27,7 +27,7 @@ class MockGoogleSignInAuthentication extends Mock
 void main() {
   const email = 'test@gmail.com';
   const password = 't0ps3cret42';
-  const user = User(
+  const user = IntraUser(
     id: _mockFirebaseUserUid,
     email: _mockFirebaseUserEmail,
     name: null,
@@ -55,20 +55,22 @@ void main() {
     group('signUp', () {
       test('throws AssertionError when email is null', () {
         expect(
-          () => authenticationRepository.signUp(
-            email: null,
-            password: password,
-          ),
+              () =>
+              authenticationRepository.signUp(
+                email: null,
+                password: password,
+              ),
           throwsAssertionError,
         );
       });
 
       test('throws AssertionError when password is null', () {
         expect(
-          () => authenticationRepository.signUp(
-            email: email,
-            password: null,
-          ),
+              () =>
+              authenticationRepository.signUp(
+                email: email,
+                password: null,
+              ),
           throwsAssertionError,
         );
       });
@@ -89,16 +91,16 @@ void main() {
       });
 
       test('throws SignUpFailure when createUserWithEmailAndPassword throws',
-          () async {
-        when(firebaseAuth.createUserWithEmailAndPassword(
-          email: anyNamed('email'),
-          password: anyNamed('password'),
-        )).thenThrow(Exception());
-        expect(
-          authenticationRepository.signUp(email: email, password: password),
-          throwsA(isA<SignUpFailure>()),
-        );
-      });
+              () async {
+            when(firebaseAuth.createUserWithEmailAndPassword(
+              email: anyNamed('email'),
+              password: anyNamed('password'),
+            )).thenThrow(Exception());
+            expect(
+              authenticationRepository.signUp(email: email, password: password),
+              throwsA(isA<SignUpFailure>()),
+            );
+          });
     });
 
     group('loginWithGoogle', () {
@@ -135,20 +137,22 @@ void main() {
     group('logInWithEmailAndPassword', () {
       test('throws AssertionError when email is null', () {
         expect(
-          () => authenticationRepository.logInWithEmailAndPassword(
-            email: null,
-            password: password,
-          ),
+              () =>
+              authenticationRepository.logInWithEmailAndPassword(
+                email: null,
+                password: password,
+              ),
           throwsAssertionError,
         );
       });
 
       test('throws AssertionError when password is null', () {
         expect(
-          () => authenticationRepository.logInWithEmailAndPassword(
-            email: email,
-            password: null,
-          ),
+              () =>
+              authenticationRepository.logInWithEmailAndPassword(
+                email: email,
+                password: null,
+              ),
           throwsAssertionError,
         );
       });
@@ -176,7 +180,7 @@ void main() {
 
       test(
           'throws LogInWithEmailAndPasswordFailure '
-          'when signInWithEmailAndPassword throws', () async {
+              'when signInWithEmailAndPassword throws', () async {
         when(firebaseAuth.signInWithEmailAndPassword(
           email: anyNamed('email'),
           password: anyNamed('password'),
@@ -210,23 +214,23 @@ void main() {
     });
 
     group('user', () {
-      test('emits User.empty when firebase user is null', () async {
+      test('emits IntraUser.empty when firebase user is null', () async {
         when(firebaseAuth.onAuthStateChanged).thenAnswer(
-          (_) => Stream.value(null),
+              (_) => Stream.value(null),
         );
         await expectLater(
           authenticationRepository.user,
-          emitsInOrder(const <User>[User.empty]),
+          emitsInOrder(const <IntraUser>[IntraUser.empty]),
         );
       });
 
       test('emits User when firebase user is not null', () async {
         when(firebaseAuth.onAuthStateChanged).thenAnswer(
-          (_) => Stream.value(MockFirebaseUser()),
+              (_) => Stream.value(MockFirebaseUser()),
         );
         await expectLater(
           authenticationRepository.user,
-          emitsInOrder(const <User>[user]),
+          emitsInOrder(const <IntraUser>[IntraUser]),
         );
       });
     });

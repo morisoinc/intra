@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intra/screens/schedule_session/cubit/schedule_session_cubit.dart';
+import 'package:intra/screens/therapists/therapists.dart';
 import 'package:intra/widgets/base_screen_widget/IntraContainer.dart';
 import 'package:intra/widgets/base_screen_widget/IntraHeader.dart';
 import 'package:intra/widgets/button/intra_back_button.dart';
@@ -30,7 +32,10 @@ class ScheduleSessionContent extends StatelessWidget {
               children: [
                 SizedBox(height: 31),
                 IntraBigMainButton(
-                    'Psicólogos', 'Veja especialistas disponíveis', null),
+                  'Psicólogos',
+                  'Veja especialistas disponíveis',
+                  () => _openTherapists(context),
+                ),
                 SizedBox(height: 35),
                 IntraBigMainButton(
                     'Calendário', 'Dê prioridade ao dia da consulta', null),
@@ -39,5 +44,10 @@ class ScheduleSessionContent extends StatelessWidget {
             bgStyle: backgroundStyle.translucentRectangles,
           );
         });
+  }
+
+  _openTherapists(BuildContext context) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => TherapistsPage()));
   }
 }
