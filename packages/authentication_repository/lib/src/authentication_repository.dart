@@ -113,6 +113,6 @@ class AuthenticationRepository {
 
 extension on User {
   IntraUser get toUser {
-    return IntraUser(id: uid, email: email, name: displayName, photo: photoURL);
+    return IntraUser(id: uid, email: email, name: displayName, photo: photoUrl);
   }
 }
