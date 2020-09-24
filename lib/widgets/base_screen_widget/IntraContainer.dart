@@ -7,14 +7,15 @@ import 'package:intra/theme.dart';
 import 'package:intra/widgets/base_screen_widget/IntraHeader.dart';
 
 class IntraContainer extends StatelessWidget {
-  final Widget header;
+  final Widget headerContent;
   final Widget body;
   final backgroundStyle bgStyle;
+  final Function onBackPressed;
+  final String headerTitle;
+  final Image headerBackgroundImage;
 
-  IntraContainer(this.header, this.body, {this.bgStyle = backgroundStyle.none});
-
-  static const headerPadding = EdgeInsets.fromLTRB(IntraMargin.horizontalMargin,
-      IntraMargin.verticalMargin, IntraMargin.horizontalMargin, 0.0);
+  IntraContainer(this.body,
+      {this.headerContent, this.bgStyle = backgroundStyle.none, this.onBackPressed, this.headerTitle, this.headerBackgroundImage});
 
   static const bodyPadding = EdgeInsets.fromLTRB(IntraMargin.horizontalMargin,
       0.0, IntraMargin.horizontalMargin, IntraMargin.verticalMargin);
@@ -35,12 +36,10 @@ class IntraContainer extends StatelessWidget {
               children: [
                 IntraHeader(
                   bgStyle,
-                  SafeArea(
-                    child: Container(
-                      padding: headerPadding,
-                      child: header,
-                    ),
-                  ),
+                  headerContent,
+                  onBackPressed: onBackPressed,
+                  title: headerTitle,
+                  backgroundImage: headerBackgroundImage,
                 ),
                 Container(
                   padding: bodyPadding,

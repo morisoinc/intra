@@ -17,19 +17,6 @@ class ScheduleSessionContent extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return IntraContainer(
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              IntraBackButton(
-                () {
-                  Navigator.pop(context);
-                },
-                translucent: false,
-              ),
-              SizedBox(height: 24),
-              IntraPageTitleText('Agendar Consulta'),
-              SizedBox(height: 14),
-              IntraPageSubtitleText(
-                  'Veja os profissionais disponíveis e escolha o que melhor pode te ajudar'),
-            ]),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -44,6 +31,16 @@ class ScheduleSessionContent extends StatelessWidget {
                     'Calendário', 'Dê prioridade ao dia da consulta', null),
               ],
             ),
+            headerContent: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IntraPageTitleText('Agendar Consulta'),
+                SizedBox(height: 14),
+                IntraPageSubtitleText(
+                    'Veja os profissionais disponíveis e escolha o que melhor pode te ajudar'),
+              ],
+            ),
+            onBackPressed: () => Navigator.pop(context),
             bgStyle: backgroundStyle.translucentRectangles,
           );
         });

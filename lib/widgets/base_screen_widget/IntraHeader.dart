@@ -1,17 +1,32 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:intra/meta/intraSpacing/margin.dart';
+import 'package:intra/widgets/button/intra_back_button.dart';
+import 'package:intra/widgets/text/intra_page_subtitle_text.dart';
 
 import '../../theme.dart';
 
 class IntraHeader extends StatefulWidget {
   final Widget child;
   final backgroundStyle bgStyle;
+  final Function onBackPressed;
+  final String title;
+  final Image backgroundImage;
 
-  IntraHeader(this.bgStyle, this.child);
+  IntraHeader(
+    this.bgStyle,
+    this.child, {
+    this.onBackPressed,
+    this.title,
+    this.backgroundImage,
+  });
 
   @override
-  State createState() => _IntraHeaderState(bgStyle, child);
+  State createState() => _IntraHeaderState(bgStyle, child,
+      onBackPressed: onBackPressed,
+      title: title,
+      backgroundImage: backgroundImage);
 }
 
 class _IntraHeaderState extends State<IntraHeader> {
@@ -19,10 +34,19 @@ class _IntraHeaderState extends State<IntraHeader> {
 
   final Widget child;
   final bgStyle;
+  final Function onBackPressed;
+  final String title;
+  final Image backgroundImage;
 
   Size headerSize = Size(0, 0);
 
-  _IntraHeaderState(this.bgStyle, this.child);
+  _IntraHeaderState(
+    this.bgStyle,
+    this.child, {
+    this.onBackPressed,
+    this.title,
+    this.backgroundImage,
+  });
 
   @override
   void initState() {
@@ -40,7 +64,13 @@ class _IntraHeaderState extends State<IntraHeader> {
   Widget build(BuildContext context) {
     return Container(
       child: bgStyle == backgroundStyle.none
-          ? child
+          ? HeaderItself(
+              child: child,
+              onBackPressed: onBackPressed,
+              isBackgroundLight: true,
+              title: title,
+              image: backgroundImage,
+            )
           : Container(
               key: _headerKey,
               child: CustomPaint(
@@ -49,7 +79,14 @@ class _IntraHeaderState extends State<IntraHeader> {
                         headerSize.height, MediaQuery.of(context).size.width)
                     : DoubleTranslucentRectangleBackground(
                         MediaQuery.of(context).size.width),
-                child: child,
+                child: HeaderItself(
+                  child: child,
+                  onBackPressed: onBackPressed,
+                  title: title,
+                  image: backgroundImage,
+                  isBackgroundLight:
+                      bgStyle == backgroundStyle.translucentRectangles,
+                ),
               ),
             ),
     );
@@ -60,6 +97,145 @@ enum backgroundStyle {
   none,
   curved,
   translucentRectangles,
+}
+
+class HeaderItself extends StatelessWidget {
+  final Widget child;
+  final Function onBackPressed;
+  final bool isBackgroundLight;
+  final String title;
+  final Image image;
+
+  static const headerPadding = EdgeInsets.fromLTRB(IntraMargin.horizontalMargin,
+      IntraMargin.verticalMargin, IntraMargin.horizontalMargin, 0.0);
+
+  static const childPadding = EdgeInsets.fromLTRB(0, 40, 0, 0);
+  static const lonelyTitlePadding = EdgeInsets.fromLTRB(0, 11, 0, 11);
+  static const popularTitlePadding = EdgeInsets.fromLTRB(15, 0, 0, 0);
+
+  HeaderItself(
+      {this.child,
+      this.onBackPressed,
+      this.isBackgroundLight = false,
+      this.title,
+      this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    print("SUPPPP ${image == null} ${onBackPressed == null} + ${title == null}");
+    if (image == null && onBackPressed == null && title == null) {
+      return SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: headerPadding,
+          child: child,
+        ),
+      );
+    } else if (image == null && onBackPressed == null) {
+      return SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: headerPadding,
+          child: Column(
+            children: [
+              Padding(
+                padding: lonelyTitlePadding,
+                child: IntraPageSubtitleText(title, color: white1),
+              ),
+              Padding(
+                padding: childPadding,
+                child: child,
+              ),
+            ],
+          ),
+        ),
+      );
+    } else if (image == null && title == null) {
+      return SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: headerPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IntraBackButton(
+                onBackPressed,
+                translucent: !isBackgroundLight,
+              ),
+              Padding(
+                padding: childPadding,
+                child: child,
+              )
+            ],
+          ),
+        ),
+      );
+    } else if (image == null) {
+      return SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: headerPadding,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  IntraBackButton(
+                    onBackPressed,
+                    translucent: !isBackgroundLight,
+                  ),
+                  Padding(
+                    padding: popularTitlePadding,
+                    child: IntraPageSubtitleText(title, color: white1),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: childPadding,
+                child: child,
+              )
+            ],
+          ),
+        ),
+      );
+    } else if (onBackPressed == null && title == null) {
+      return image;
+    } else if (onBackPressed == null) {
+      return child;
+    } else if (title == null) {
+      return Stack(
+        children: [
+          image,
+          SafeArea(
+            bottom: false,
+            child: Padding(
+              padding: headerPadding,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      IntraBackButton(
+                        onBackPressed,
+                        translucent: !isBackgroundLight,
+                      ),
+                      Padding(
+                        padding: popularTitlePadding,
+                        child: IntraPageSubtitleText(title, color: white1),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: childPadding,
+                    child: child,
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+    return child;
+  }
 }
 
 class CurvedBackground extends CustomPainter {
@@ -110,8 +286,8 @@ class DoubleTranslucentRectangleBackground extends CustomPainter {
     var path = Path();
     path.moveTo(width / 2, 0);
     path.lineTo(width / 2, purpleRectangleHeight / 1.8);
-    path.quadraticBezierTo(
-        width / 2, purpleRectangleHeight, width / 2 + curveRadius, purpleRectangleHeight);
+    path.quadraticBezierTo(width / 2, purpleRectangleHeight,
+        width / 2 + curveRadius, purpleRectangleHeight);
     path.lineTo(width, purpleRectangleHeight);
     path.lineTo(width, 0);
     path.lineTo(width / 2, 0);
@@ -120,11 +296,25 @@ class DoubleTranslucentRectangleBackground extends CustomPainter {
 
     path = Path();
     path.moveTo(width - width / 4, purpleRectangleHeight + rectangleSpacing);
-    path.lineTo(width - width / 4, purpleRectangleHeight + rectangleSpacing + blueRectangleHeight);
+    path.lineTo(width - width / 4,
+        purpleRectangleHeight + rectangleSpacing + blueRectangleHeight);
     path.quadraticBezierTo(
-        width - width / 4, purpleRectangleHeight + rectangleSpacing + blueRectangleHeight + curveRadius,
-        width - width / 4 + curveRadius, purpleRectangleHeight + rectangleSpacing + blueRectangleHeight + curveRadius);
-    path.lineTo(width, purpleRectangleHeight + rectangleSpacing + blueRectangleHeight + curveRadius);
+        width - width / 4,
+        purpleRectangleHeight +
+            rectangleSpacing +
+            blueRectangleHeight +
+            curveRadius,
+        width - width / 4 + curveRadius,
+        purpleRectangleHeight +
+            rectangleSpacing +
+            blueRectangleHeight +
+            curveRadius);
+    path.lineTo(
+        width,
+        purpleRectangleHeight +
+            rectangleSpacing +
+            blueRectangleHeight +
+            curveRadius);
     path.lineTo(width, purpleRectangleHeight + rectangleSpacing);
     path.lineTo(width - width / 4, purpleRectangleHeight + rectangleSpacing);
 

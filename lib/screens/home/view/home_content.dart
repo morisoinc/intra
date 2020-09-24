@@ -17,25 +17,6 @@ class HomeContent extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return IntraContainer(
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            IntraSubpageTitleText(
-              'Olá, ' + state.userName + '!',
-              color: white1,
-            ),
-            SizedBox(height: 8),
-            IntraPageSubtitleText(
-              'Como está se sentindo hoje?',
-              color: white1,
-            ),
-            SizedBox(height: 16),
-            IntraSplitPillButton(
-              'Consultas',
-              '2 agendadas',
-              'Tarefas',
-              '5 anotadas',
-            ),
-            SizedBox(height: 16),
-          ]),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -67,6 +48,25 @@ class HomeContent extends StatelessWidget {
               ),
             ],
           ),
+          headerContent: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            IntraSubpageTitleText(
+              'Olá, ' + state.userName + '!',
+              color: white1,
+            ),
+            SizedBox(height: 8),
+            IntraPageSubtitleText(
+              'Como está se sentindo hoje?',
+              color: white1,
+            ),
+            SizedBox(height: 16),
+            IntraSplitPillButton(
+              'Consultas',
+              '2 agendadas',
+              'Tarefas',
+              '5 anotadas',
+            ),
+            SizedBox(height: 16),
+          ]),
           bgStyle: backgroundStyle.curved,
         );
       },

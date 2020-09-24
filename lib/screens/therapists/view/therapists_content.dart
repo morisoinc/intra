@@ -13,27 +13,14 @@ class TherapistsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntraContainer(
-      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        IntraBackButton(() {
-          Navigator.pop(context);
-        }),
-        SizedBox(height: 24),
-        IntraPageTitleText('Psicólogos', color: white1),
-        SizedBox(height: 14),
-        IntraPageSubtitleText(
-            'Veja os profissionais disponíveis e escolha o que melhor pode te ajudar',
-            color: white1),
-        SizedBox(height: 24),
-      ]),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 31),
           BlocConsumer<TherapistsCubit, TherapistsState>(
             listener: (context, state) {},
             builder: (context, state) {
               if (state is TherapistsLoading || state is TherapistsInitial) {
-                return Text('loading');
+                return Text('');
               } else if (state is TherapistsLoaded) {
                 return ListView.builder(
                     itemCount: state.therapists.length,
@@ -50,12 +37,22 @@ class TherapistsContent extends StatelessWidget {
                     });
               }
 
-              return Text('what the frick');
+              return Text('');
             },
           ),
         ],
       ),
+      headerContent: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        IntraPageTitleText('Psicólogos', color: white1),
+        SizedBox(height: 14),
+        IntraPageSubtitleText(
+            'Veja os profissionais disponíveis e escolha o que melhor pode te ajudar',
+            color: white1),
+        SizedBox(height: 24),
+      ]),
       bgStyle: backgroundStyle.curved,
+      onBackPressed: () => Navigator.pop(context),
+      headerTitle: "Agendar Consulta",
     );
   }
 }
