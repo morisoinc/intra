@@ -65,7 +65,6 @@ class HomeContent extends StatelessWidget {
               'Tarefas',
               '5 anotadas',
             ),
-            SizedBox(height: 16),
           ]),
           bgStyle: backgroundStyle.curved,
         );

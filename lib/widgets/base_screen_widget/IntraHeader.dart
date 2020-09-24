@@ -107,7 +107,7 @@ class HeaderItself extends StatelessWidget {
   final Image image;
 
   static const headerPadding = EdgeInsets.fromLTRB(IntraMargin.horizontalMargin,
-      IntraMargin.verticalMargin, IntraMargin.horizontalMargin, 0.0);
+      IntraMargin.verticalMargin, IntraMargin.horizontalMargin, IntraMargin.verticalMargin);
 
   static const childPadding = EdgeInsets.fromLTRB(0, 40, 0, 0);
   static const lonelyTitlePadding = EdgeInsets.fromLTRB(0, 11, 0, 11);
@@ -122,7 +122,6 @@ class HeaderItself extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("SUPPPP ${image == null} ${onBackPressed == null} + ${title == null}");
     if (image == null && onBackPressed == null && title == null) {
       return SafeArea(
         bottom: false,

@@ -15,10 +15,14 @@ class IntraContainer extends StatelessWidget {
   final Image headerBackgroundImage;
 
   IntraContainer(this.body,
-      {this.headerContent, this.bgStyle = backgroundStyle.none, this.onBackPressed, this.headerTitle, this.headerBackgroundImage});
+      {this.headerContent,
+      this.bgStyle = backgroundStyle.none,
+      this.onBackPressed,
+      this.headerTitle,
+      this.headerBackgroundImage});
 
-  static const bodyPadding = EdgeInsets.fromLTRB(IntraMargin.horizontalMargin,
-      0.0, IntraMargin.horizontalMargin, IntraMargin.verticalMargin);
+  static const bodyPadding = EdgeInsets.fromLTRB(
+      IntraMargin.horizontalMargin, 0.0, IntraMargin.horizontalMargin, 0.0);
 
   @override
   Widget build(BuildContext context) {

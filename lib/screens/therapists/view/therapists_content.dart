@@ -48,7 +48,6 @@ class TherapistsContent extends StatelessWidget {
         IntraPageSubtitleText(
             'Veja os profissionais disponíveis e escolha o que melhor pode te ajudar',
             color: white1),
-        SizedBox(height: 24),
       ]),
       bgStyle: backgroundStyle.curved,
       onBackPressed: () => Navigator.pop(context),

@@ -20,7 +20,7 @@ class ScheduleSessionContent extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 31),
+                SizedBox(height: 6),
                 IntraBigMainButton(
                   'Psicólogos',
                   'Veja especialistas disponíveis',
