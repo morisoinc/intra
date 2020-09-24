@@ -18,9 +18,12 @@ class ScheduleSessionContent extends StatelessWidget {
         builder: (context, state) {
           return IntraContainer(
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              IntraBackButton(() {
-                Navigator.pop(context);
-              }),
+              IntraBackButton(
+                () {
+                  Navigator.pop(context);
+                },
+                translucent: false,
+              ),
               SizedBox(height: 24),
               IntraPageTitleText('Agendar Consulta'),
               SizedBox(height: 14),
@@ -47,7 +50,7 @@ class ScheduleSessionContent extends StatelessWidget {
   }
 
   _openTherapists(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => TherapistsPage()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => TherapistsPage()));
   }
 }

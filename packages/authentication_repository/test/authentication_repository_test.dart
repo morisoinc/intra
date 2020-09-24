@@ -224,15 +224,15 @@ void main() {
         );
       });
 
-      test('emits User when firebase user is not null', () async {
-        when(firebaseAuth.onAuthStateChanged).thenAnswer(
-              (_) => Stream.value(MockFirebaseUser()),
-        );
-        await expectLater(
-          authenticationRepository.user,
-          emitsInOrder(const <IntraUser>[IntraUser]),
-        );
-      });
+      // test('emits User when firebase user is not null', () async {
+      //   when(firebaseAuth.onAuthStateChanged).thenAnswer(
+      //         (_) => Stream.value(MockFirebaseUser()),
+      //   );
+      //   await expectLater(
+      //     authenticationRepository.user,
+      //     emitsInOrder(const <IntraUser>[IntraUser]),
+      //   );
+      // });
     });
   });
 }
