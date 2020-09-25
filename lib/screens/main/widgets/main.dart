@@ -52,16 +52,16 @@ class _MainState extends State<Main> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: InkWell(
         child: Container(
-          margin: const EdgeInsets.only(top:30),
+          margin: const EdgeInsets.only(top: 30),
           width: 60,
           height: 60,
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-              color: Color(0xFFC0B9DD),
-              borderRadius: BorderRadius.circular(30)
+            color: Color(0xFFC0B9DD),
+            borderRadius: BorderRadius.circular(30),
           ),
         ),
-        onTap: (){},
+        onTap: () {},
       ),
       bottomNavigationBar: FABBottomAppBar(
         centerItemText: '',
@@ -80,7 +80,8 @@ class _MainState extends State<Main> {
 
   Widget _generateButton(IconName iconName) {
     final asset = 'assets/navbar_' +
-        (iconName.index == _currentIndex ? '' : 'un') + 'selected_${iconName.toString().split('.').last}.svg';
+        (iconName.index == _currentIndex ? '' : 'un') +
+        'selected_${iconName.toString().split('.').last}.svg';
 
     return Container(
       padding: EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
@@ -89,9 +90,4 @@ class _MainState extends State<Main> {
   }
 }
 
-enum IconName {
-  home,
-  notifications,
-  help,
-  settings
-}
+enum IconName { home, notifications, help, settings }
