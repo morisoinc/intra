@@ -44,37 +44,41 @@ class _MainState extends State<Main> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: InkWell(
-        child: Container(
-          margin: const EdgeInsets.only(top: 30),
-          width: 60,
-          height: 60,
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Color(0xFFC0B9DD),
-            borderRadius: BorderRadius.circular(30),
-          ),
+    return ColorfulSafeArea(
+      top: false,
+      color: white3,
+      child: Scaffold(
+        body: IndexedStack(
+          index: _currentIndex,
+          children: _pages,
         ),
-        onTap: () {},
-      ),
-      bottomNavigationBar: FABBottomAppBar(
-        centerItemText: '',
-        color: theme.primaryColor,
-        selectedColor: theme.primaryColorDark,
-        onTabSelected: _selectedTab,
-        items: [
-          _generateButton(IconName.home),
-          _generateButton(IconName.notifications),
-          _generateButton(IconName.help),
-          _generateButton(IconName.settings),
-        ],
-      ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: InkWell(
+          child: Container(
+            margin: const EdgeInsets.only(top: 30),
+            width: 60,
+            height: 60,
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Color(0xFFC0B9DD),
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+          onTap: () {},
+        ),
+        bottomNavigationBar: FABBottomAppBar(
+          centerItemText: '',
+          color: theme.primaryColor,
+          selectedColor: theme.primaryColorDark,
+          onTabSelected: _selectedTab,
+          items: [
+            _generateButton(IconName.home),
+            _generateButton(IconName.notifications),
+            _generateButton(IconName.help),
+            _generateButton(IconName.settings),
+          ],
+        ),
+      )
     );
   }
 

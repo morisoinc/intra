@@ -386,7 +386,12 @@ DEPENDENCIES:
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
 
 SPEC REPOS:
-  trunk:
+  https://cdn.cocoapods.org/:
+    - AppAuth
+    - Firebase
+    - FirebaseCore
+    - GTMSessionFetcher
+  https://github.com/cocoapods/specs.git:
     - abseil
     - AppAuth
     - BoringSSL-GRPC
@@ -394,7 +399,6 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseAuth
     - FirebaseAuthInterop
-    - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
     - FirebaseFirestore
@@ -461,4 +465,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.7.5

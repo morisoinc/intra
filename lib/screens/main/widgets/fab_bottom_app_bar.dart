@@ -59,27 +59,22 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
     items.insert(items.length >> 1, _buildMiddleTabItem());
 
     return Container(
+      padding: EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
+      child: Row(
+        children: items,
+      ),
+      decoration: BoxDecoration(
         color: white3,
-        child: SafeArea(
-          top: false,
-          child: Container(
-            padding: EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
-            child: Row(
-              children: items,
-            ),
-            decoration: BoxDecoration(
-              color: white3,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 4,
-                  blurRadius: 10,
-                  offset: Offset(0, -13),
-                ),
-              ],
-            ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 4,
+            blurRadius: 10,
+            offset: Offset(0, -13),
           ),
-        ));
+        ],
+      ),
+    );
   }
 
   Widget _buildMiddleTabItem() {
