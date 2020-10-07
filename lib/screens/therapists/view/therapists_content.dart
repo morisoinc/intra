@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intra/screens/therapist/therapist.dart';
 import 'package:intra/screens/therapists/cubit/therapists_cubit.dart';
 import 'package:intra/theme.dart';
 import 'package:intra/widgets/base_screen_widget/IntraContainer.dart';
 import 'package:intra/widgets/base_screen_widget/IntraHeader.dart';
-import 'package:intra/widgets/button/intra_back_button.dart';
 import 'package:intra/widgets/button/intra_big_main_button.dart';
 import 'package:intra/widgets/text/intra_page_subtitle_text.dart';
 import 'package:intra/widgets/text/intra_page_title_text.dart';
@@ -26,12 +26,15 @@ class TherapistsContent extends StatelessWidget {
                     itemCount: state.therapists.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Container(
-                        margin: EdgeInsets.only(bottom: 16),
-                        child: IntraBigMainButton(
-                          state.therapists[index].fullName,
-                          state.therapists[index].title,
-                          null,
+                      return GestureDetector(
+                        onTap: () => _openTherapist(context, state.therapists[index].id),
+                        child: Container(
+                          margin: EdgeInsets.only(bottom: 16),
+                          child: IntraBigMainButton(
+                            state.therapists[index].fullName,
+                            state.therapists[index].title,
+                            null,
+                          ),
                         ),
                       );
                     });
@@ -53,5 +56,10 @@ class TherapistsContent extends StatelessWidget {
       onBackPressed: () => Navigator.pop(context),
       headerTitle: "Agendar Consulta",
     );
+  }
+
+  _openTherapist(BuildContext context, String therapistId) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => TherapistPage(therapistId)));
   }
 }
