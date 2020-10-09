@@ -20,13 +20,17 @@ class IntraHeader extends StatefulWidget {
     this.onBackPressed,
     this.title,
     this.backgroundImage,
-  });
+  }) {
+    createState();
+  }
 
   @override
-  State createState() => _IntraHeaderState(bgStyle, child,
-      onBackPressed: onBackPressed,
-      title: title,
-      backgroundImage: backgroundImage);
+  State createState() {
+    return _IntraHeaderState(bgStyle, child,
+        onBackPressed: onBackPressed,
+        title: title,
+    );
+  }
 }
 
 class _IntraHeaderState extends State<IntraHeader> {
@@ -36,7 +40,6 @@ class _IntraHeaderState extends State<IntraHeader> {
   final bgStyle;
   final Function onBackPressed;
   final String title;
-  final Image backgroundImage;
 
   Size headerSize = Size(0, 0);
 
@@ -45,7 +48,6 @@ class _IntraHeaderState extends State<IntraHeader> {
     this.child, {
     this.onBackPressed,
     this.title,
-    this.backgroundImage,
   });
 
   @override
@@ -55,8 +57,13 @@ class _IntraHeaderState extends State<IntraHeader> {
   }
 
   getHeaderSize() {
-    RenderBox _header = _headerKey.currentContext.findRenderObject();
-    headerSize = _header.size;
+    if (widget.backgroundImage != null) {
+      print('BACKGROUND IMAGE IS NOT NULL');
+      headerSize = Size(MediaQuery.of(context).size.width, 350);
+    } else {
+      RenderBox _header = _headerKey.currentContext.findRenderObject();
+      headerSize = _header.size;
+    }
     setState(() {});
   }
 
@@ -69,7 +76,7 @@ class _IntraHeaderState extends State<IntraHeader> {
               onBackPressed: onBackPressed,
               isBackgroundLight: true,
               title: title,
-              image: backgroundImage,
+              image: widget.backgroundImage,
             )
           : Container(
               key: _headerKey,
@@ -83,7 +90,7 @@ class _IntraHeaderState extends State<IntraHeader> {
                   child: child,
                   onBackPressed: onBackPressed,
                   title: title,
-                  image: backgroundImage,
+                  image: widget.backgroundImage,
                   isBackgroundLight:
                       bgStyle == backgroundStyle.translucentRectangles,
                 ),
@@ -200,10 +207,19 @@ class HeaderItself extends StatelessWidget {
       return image;
     } else if (onBackPressed == null) {
       return child;
-    } else if (title == null) {
+    } else {
       return Stack(
         children: [
-          image,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Opacity(
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: image,
+              ),
+              opacity: .5,
+            ),
+          ),
           SafeArea(
             bottom: false,
             child: Padding(
@@ -233,7 +249,6 @@ class HeaderItself extends StatelessWidget {
         ],
       );
     }
-    return child;
   }
 }
 

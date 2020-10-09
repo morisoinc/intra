@@ -10,7 +10,9 @@ class TherapistInitial extends TherapistState {
 }
 
 class TherapistLoading extends TherapistState {
+  final Therapist therapist;
 
+  const TherapistLoading(this.therapist);
 }
 
 class TherapistLoaded extends TherapistState {
