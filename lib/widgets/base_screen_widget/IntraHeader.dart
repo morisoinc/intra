@@ -58,8 +58,7 @@ class _IntraHeaderState extends State<IntraHeader> {
 
   getHeaderSize() {
     if (widget.backgroundImage != null) {
-      print('BACKGROUND IMAGE IS NOT NULL');
-      headerSize = Size(MediaQuery.of(context).size.width, 350);
+      headerSize = Size(MediaQuery.of(context).size.width, 325);
     } else {
       RenderBox _header = _headerKey.currentContext.findRenderObject();
       headerSize = _header.size;
