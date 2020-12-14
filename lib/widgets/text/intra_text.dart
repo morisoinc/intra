@@ -7,8 +7,9 @@ class IntraText extends StatelessWidget {
   final Color color;
   final double fontSize;
   final FontWeight fontWeight;
+  final TextAlign textAlign;
 
-  IntraText(this.text, this.color, this.fontSize, this.fontWeight);
+  IntraText(this.text, this.color, this.fontSize, this.fontWeight, {this.textAlign = TextAlign.start});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,7 @@ class IntraText extends StatelessWidget {
           fontSize: fontSize
       ),
       maxLines: 5,
+      textAlign: textAlign,
     );
   }
 }

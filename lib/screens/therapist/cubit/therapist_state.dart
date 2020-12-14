@@ -30,7 +30,7 @@ class Therapist {
   String bio;
   String fullName;
   Image image;
-  String specialty;
+  String specialties;
   String universityInitials;
   int yearsOfExperience;
 
@@ -51,7 +51,7 @@ class Therapist {
           fullName = value ?? null;
         break;
         case 'specialty':
-          specialty = value ?? null;
+          specialties = value ?? null;
         break;
         case 'universityInitials':
           universityInitials = value ?? null;

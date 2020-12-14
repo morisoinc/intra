@@ -54,8 +54,9 @@ class IntraBigMainButton extends StatelessWidget {
                     ),
                     Align(
                       alignment: Alignment.topRight,
-                      child:
-                      SvgPicture.asset('assets/icon_right_arrow_purple4.svg'),
+                      child: SvgPicture.asset(
+                        'assets/icon_right_arrow_purple4.svg',
+                      ),
                     ),
                   ],
                 ),
