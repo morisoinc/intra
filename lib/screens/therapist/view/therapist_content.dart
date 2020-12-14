@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intra/screens/therapist/cubit/therapist_cubit.dart';
 import 'package:intra/widgets/base_screen_widget/IntraContainer.dart';
 import 'package:intra/widgets/base_screen_widget/IntraHeader.dart';
+import 'package:intra/widgets/text/intra_instructive_title.dart';
 
 class TherapistContent extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class TherapistContent extends StatelessWidget {
         builder: (context, state) {
           if (state is TherapistLoading) {
             return IntraContainer(
-              Container(),
+              TherapistBody(state.therapist),
               headerBackgroundImage: state.therapist?.image,
               bgStyle: backgroundStyle.curved,
               onBackPressed: () => Navigator.pop(context),
@@ -21,7 +22,7 @@ class TherapistContent extends StatelessWidget {
           } else if (state is TherapistLoaded) {
             print('image is loaded mah boys');
             return IntraContainer(
-              Container(),
+              TherapistBody(state.therapist),
               headerBackgroundImage: state.therapist?.image,
               bgStyle: backgroundStyle.curved,
               onBackPressed: () => Navigator.pop(context),
@@ -32,3 +33,21 @@ class TherapistContent extends StatelessWidget {
         });
   }
 }
+
+class TherapistBody extends StatelessWidget {
+
+  final Therapist therapist;
+
+  TherapistBody(this.therapist);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          IntraInstructiveTitle(therapist.fullName),
+        ],
+      );
+  }
+}
+
