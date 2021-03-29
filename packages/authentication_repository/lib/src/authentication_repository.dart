@@ -37,7 +37,7 @@ class AuthenticationRepository {
   ///
   /// Emits [IntraUser.empty] if the user is not authenticated.
   Stream<IntraUser> get user {
-    return _firebaseAuth.onAuthStateChanged.map((firebaseUser) {
+    return _firebaseAuth.authStateChanges().map((firebaseUser) {
       return firebaseUser == null ? IntraUser.empty : firebaseUser.toUser;
     });
   }
@@ -64,17 +64,17 @@ class AuthenticationRepository {
   ///
   /// Throws a [LogInWithEmailAndPasswordFailure] if an exception occurs.
   Future<void> logInWithGoogle() async {
-    try {
-      final googleUser = await _googleSignIn.signIn();
-      final googleAuth = await googleUser.authentication;
-      final credential = GoogleAuthProvider.getCredential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-      await _firebaseAuth.signInWithCredential(credential);
-    } on Exception {
-      throw LogInWithGoogleFailure();
-    }
+    // try {
+    //   final googleUser = await _googleSignIn.signIn();
+    //   final googleAuth = await googleUser.authentication;
+    //   final credential = GoogleAuthProvider.getCredential(
+    //     accessToken: googleAuth.accessToken,
+    //     idToken: googleAuth.idToken,
+    //   );
+    //   await _firebaseAuth.signInWithCredential(credential);
+    // } on Exception {
+    //   throw LogInWithGoogleFailure();
+    // }
   }
 
   /// Signs in with the provided [email] and [password].
@@ -113,6 +113,6 @@ class AuthenticationRepository {
 
 extension on User {
   IntraUser get toUser {
-    return IntraUser(id: uid, email: email, name: displayName, photo: photoUrl);
+    return IntraUser(id: uid, email: email, name: displayName, photo: photoURL);
   }
 }

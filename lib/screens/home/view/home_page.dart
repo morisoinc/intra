@@ -14,9 +14,12 @@ class HomePage extends StatelessWidget {
         .doc(FirebaseAuth.instance.currentUser.uid)
         .get();
 
+    print('COMING UP');
+
     return FutureBuilder(
       future: user,
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        print('DOES IT HAVE DATA');
         if (snapshot.hasData) {
           Map<String, dynamic> data = snapshot.data.data();
           return BlocProvider<HomeCubit>(

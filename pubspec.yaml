@@ -23,28 +23,26 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^0.5.0
-  firebase_analytics: ^6.0.0
-  firebase_auth: ^0.18.0+1
-  firebase_storage: ^4.0.1
-  cloud_firestore: ^0.14.0+2
+  firebase_core: ^1.0.1
+  firebase_analytics: ^7.1.1
+  firebase_auth: ^1.0.1
+  firebase_storage: ^8.0.0
+  cloud_firestore: ^1.0.1
 
   bloc: ^6.0.1
-  equatable: ^1.2.3
+  equatable: ^2.0.0
   flutter_bloc: ^6.0.1
   font_awesome_flutter: ^8.4.0
   flutter_cubit: ^0.1.1
-  formz: 0.3.1
-  google_fonts: ^1.1.0
+  formz: 0.3.2
   meta: ^1.1.8
   pedantic: ^1.9.0
   authentication_repository:
     path: packages/authentication_repository
 
-  cupertino_icons: 1.0.0
+  cupertino_icons: 1.0.2
 
-  ## independent github packages
-  flutter_svg: 0.19.0
+  flutter_svg: 0.19.3
   colorful_safe_area: 0.2.1
 
 dev_dependencies:
