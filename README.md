@@ -1,16 +1,13 @@
+
 # intra
 
-A new Flutter project.
+intra is an app focused on improving the mental health of college students
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## setup
+  
+1. download the android and iOS config files from firebase console
+   - put the `google-services.json` in `android/app` folder
+   - put the `GoogleService-Info.plist` in `iOS` folder
+2. run `flutter pub get` on  terminal
+3. open either an android or an iOS emulator
+4. run `flutter run`
